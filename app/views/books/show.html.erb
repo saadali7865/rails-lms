@@ -1,0 +1,10 @@
+<h1>Book Detail</h1>
+
+<p>Book name: <%= @book.title %></p>
+<p>Category:  <%= @book.category %></p>
+
+<%= link_to "Edit", edit_book_path(@book) %>
+<%= link_to "Destroy", book_path(@book), data: {
+  turbo_method: :delete,
+  turbo_confirm: "Are you sure?"
+} %>
