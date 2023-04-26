@@ -1,7 +1,24 @@
 class BooksController < ApplicationController
   before_action :filter_book, only: [:show, :edit, :update, :destroy]
   def index
-    @books = Book.active
+    if params[:q].present?
+      @books = Book.active.search(params[:q]).records
+    else
+      @books =  Book.search(
+        {
+          query: {
+            bool: {
+              must: [{
+                       term: {
+                         is_active: true
+                       }
+                     }
+              ]
+            }
+          }
+        }
+      ).records
+    end
   end
 
   def show
