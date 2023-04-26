@@ -5,6 +5,7 @@
     <%= link_to "Add Book", new_book_path %><br>
   <% end %>
   <%= link_to "View All Books", books_path %><br>
+  <%= link_to "Lend a Book", new_lend_book_path %><br>
   <%= link_to 'Logout', logout_path, method: :delete %>
 <% else %>
   <p>Please <%= link_to "sign in", new_session_path %> or <%= link_to "sign up", new_registration_path %> to continue.</p>

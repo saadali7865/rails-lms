@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books
+  has_many :lend_books
 
   has_one_attached :profile_image
   enum :user_type, [:author, :librarian, :consumer], default: :consumer

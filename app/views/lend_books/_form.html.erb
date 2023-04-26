@@ -1,0 +1,18 @@
+<%= form_with model: lend_book do |form| %>
+  <div>
+    <%= form.label :days %><br>
+    <%= form.number_field :days %>
+    <% lend_book.errors.full_messages_for(:days).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :book %>
+    <%= form.select :book_id, Book.active.map { |book| [book.title.humanize, book.id] } %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
