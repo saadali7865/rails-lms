@@ -1,2 +1,2 @@
-module Users::RegistrationsHelper
+module User::RegistrationsHelper
 end
