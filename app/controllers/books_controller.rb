@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :filter_book, only: [:show, :edit, :update, :destroy]
+  before_action :filter_book, only: [:edit, :update, :destroy]
   def index
     if params[:q].present?
       @books = Book.active.search(params[:q]).records
@@ -9,6 +9,9 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Rails.cache.fetch("book-#{params[:id]}", expires_in: 1.minute) do
+              Book.find(params[:id])
+            end
   end
 
   def new
