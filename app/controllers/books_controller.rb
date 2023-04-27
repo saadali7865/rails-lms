@@ -15,9 +15,6 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Rails.cache.fetch("book-#{params[:id]}", expires_in: 1.minute) do
-              Book.find(params[:id])
-            end
   end
 
   def new
