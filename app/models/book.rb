@@ -7,6 +7,7 @@ class Book < ApplicationRecord
   scope :active, -> { where(is_active: true) }
 
   belongs_to :user
+  has_many :lend_books
 
   enum :category, [:horror, :action, :romantic]
 
