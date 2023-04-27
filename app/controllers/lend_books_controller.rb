@@ -17,7 +17,7 @@ class LendBooksController < ApplicationController
     @book = current_user.lend_books.new(book_params)
 
     if @book.save
-      UserMailer.lend_book_request_sent_email(current_user).deliver_now
+      UserMailerWorker.perform_async(current_user.id)
       redirect_to @book
     else
       render :new, status: :unprocessable_entity
