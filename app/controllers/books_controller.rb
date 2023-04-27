@@ -6,6 +6,12 @@ class BooksController < ApplicationController
     else
       @books =  Book.search({ query: { bool: { must: [{ term: { is_active: true } }] } } }).records
     end
+
+    #memcache for top books
+    @top_books = Rails.cache.fetch("top-books", expires_in: 3.minute) do
+                   Book.active.last(3)
+                 end
+
   end
 
   def show
