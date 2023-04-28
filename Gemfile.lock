@@ -84,6 +84,7 @@ GEM
       xpath (~> 3.2)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    dalli (3.2.4)
     date (3.3.3)
     debug (1.7.2)
       irb (>= 1.5.0)
@@ -155,6 +156,7 @@ GEM
       net-smtp
     marcel (1.0.2)
     matrix (0.4.2)
+    memcached (1.8.0)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.0)
@@ -264,12 +266,14 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   capybara
+  dalli
   debug
   devise
   elasticsearch-model
   elasticsearch-rails
   importmap-rails
   jbuilder
+  memcached
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   selenium-webdriver
