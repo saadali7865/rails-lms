@@ -5,6 +5,9 @@ ruby "3.1.4"
 
 gem 'devise'
 
+gem 'dalli'
+gem 'memcached'
+
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 

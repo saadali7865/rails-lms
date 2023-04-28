@@ -1,11 +1,17 @@
 class BooksController < ApplicationController
-  before_action :filter_book, only: [:show, :edit, :update, :destroy]
+  before_action :filter_book, only: [:edit, :update, :destroy]
   def index
     if params[:q].present?
       @books = Book.active.search(params[:q]).records
     else
       @books =  Book.search({ query: { bool: { must: [{ term: { is_active: true } }] } } }).records
     end
+
+    #memcache for top books
+    @top_books = Rails.cache.fetch("top-books", expires_in: 3.minute) do
+                   Book.active.last(3)
+                 end
+
   end
 
   def show
