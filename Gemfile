@@ -7,6 +7,9 @@ gem 'devise'
 
 gem 'dalli'
 gem 'memcached'
+gem 'rspec-rails'
+gem 'shoulda-matchers', '~> 5.0'
+gem 'factory_bot_rails'
 
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
