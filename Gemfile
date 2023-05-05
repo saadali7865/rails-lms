@@ -14,6 +14,8 @@ gem 'factory_bot_rails'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 
+gem 'sidekiq'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 
