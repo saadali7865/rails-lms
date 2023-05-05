@@ -4,7 +4,20 @@ class BooksController < ApplicationController
     if params[:q].present?
       @books = Book.active.search(params[:q]).records
     else
-      @books =  Book.search({ query: { bool: { must: [{ term: { is_active: true } }] } } }).records
+      @books =  Book.search(
+        {
+          query: {
+            bool: {
+              must: [{
+                       term: {
+                         is_active: true
+                       }
+                     }
+              ]
+            }
+          }
+        }
+      ).records
     end
 
     #memcache for top books
